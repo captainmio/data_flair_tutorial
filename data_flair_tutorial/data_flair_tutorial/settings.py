@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'student'
+    'student',
+    'login'
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,10 @@ DATABASES = {
         # user name.
         'USER': 'root',
         # password
-        'PASSWORD': '!AdventgoD98',
+        'PASSWORD': '!AdventgoD98', #!AdventgoD98
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }
 

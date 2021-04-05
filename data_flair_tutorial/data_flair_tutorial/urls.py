@@ -17,8 +17,16 @@ from django.contrib import admin
 from django.urls import path
 
 from django.conf.urls import include
+from .views import *
+
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('student/', include('student.urls')),
+    path('login/', include('login.urls')),
+    path('dataflair/', index),
+    path('redirect/', data_flair),
+    path('djangotutor/', tutorial.as_view()),
+    # path('djangotutor/', RedirectView.as_view(url = 'https://data-flair.training/blogs/category/django/')),
 ]
