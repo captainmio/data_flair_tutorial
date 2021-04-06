@@ -44,7 +44,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    
+    #DataFlair #Caching Middleware - Order of middleware is important
+    # 'django.middleware.cache.UpdateCacheMiddleware', # this 2 middleware will cache all through out the views
     'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware', # this 2 middleware will cache all through out the views
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -133,3 +139,63 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+#DataFlair #Memcached
+# CACHES = {
+#     'default':{
+#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+#         'LOCATION': '127.0.0.1;11211',
+#     }
+# }
+
+
+#DataFlair #DatabaseCached
+CACHES = {
+    'default':{
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'dataflair_cache',
+        'TIMEOUT': 500,
+        'OPTIONS': {
+            'MAX_ENTRIES': 10,
+            'CULL_FREQUENCY': 1
+        }
+    }
+}
+
+
+#DataFlair #File System Cache
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+#         'LOCATION': 'D:\learning python\django_tutorial\data_flair_tutorial\cache',
+#     }
+# }
+
+
+
+#DataFlair #Local Memory Cache
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION': 'DataFlair',
+#     }
+# }
+
+
+
+#DataFlair #Dummy Caching
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+#     }
+# }
+
+
+#DataFlair #Custom Caching Engine
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'path.to.backend',
+#     }
+# }

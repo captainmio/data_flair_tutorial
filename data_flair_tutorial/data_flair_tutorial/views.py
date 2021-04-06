@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.base import RedirectView
 
+#DataFlair #View Caching
+# from django.views.decorators.cache import cache_page
+
+# cache_page(200)
+
 
 def index(request):
     html = '<h1>Data Flair Django</h1>Hello, you just configured you First URL'

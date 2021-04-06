@@ -21,6 +21,9 @@ from .views import *
 
 from django.views.generic.base import RedirectView
 
+
+from django.views.decorators.cache import cache_page
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('student/', include('student.urls')),
@@ -28,7 +31,7 @@ urlpatterns = [
     path('dataflair/', index),
     path('redirect/', data_flair),
     path('djangotutor/', tutorial.as_view()),
-    path('setcookie/', setcookie),
+    path('setcookie/', cache_page(300)(setcookie)),
     path('getcookie/', showcookie),
     path('deletecookie/', delete_co),
     # path('djangotutor/', RedirectView.as_view(url = 'https://data-flair.training/blogs/category/django/')),
