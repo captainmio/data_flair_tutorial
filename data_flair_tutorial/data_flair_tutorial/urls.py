@@ -31,8 +31,17 @@ urlpatterns = [
     path('dataflair/', index),
     path('redirect/', data_flair),
     path('djangotutor/', tutorial.as_view()),
+
     path('setcookie/', cache_page(300)(setcookie)),
     path('getcookie/', showcookie),
-    path('deletecookie/', delete_co),
+    # path('deletecookie/', delete_co),
+
+    path('testcookie/', cookie_session),
+    path('deletecookie/', cookie_delete),
+
+
+    path('create/', create_session),
+    path('access/', access_session),
+    path('delete/', delete_session),
     # path('djangotutor/', RedirectView.as_view(url = 'https://data-flair.training/blogs/category/django/')),
 ]
